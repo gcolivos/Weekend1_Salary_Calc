@@ -34,14 +34,21 @@ function addEmployee(e, complete){
         "<td>"+ employeeList[employeeList.length-1].lastName +"</td>" +
         "<td>"+ employeeList[employeeList.length-1].idNumber +"</td>" +
         "<td>"+ employeeList[employeeList.length-1].jobTitle +"</td>" +
-        "<td>"+ employeeList[employeeList.length-1].annualSalary +"</td>"        
+        "<td>"+ employeeList[employeeList.length-1].annualSalary +"</td>" +
+        "<td> <button class='deleteButton'> Delete </button> </td>" +
+        "</tr>"  
     )
     document.getElementById("firstName").value = ""
     document.getElementById("lastName").value = ""
     document.getElementById("idNumber").value = ""
     document.getElementById("jobTitle").value = ""
     document.getElementById("annualSalary").value = ""
+    $('.deleteButton').on('click', deleteEmployee)
 
     console.log(employeeList[employeeList.length-1]);
 }
 
+function deleteEmployee(e, complete){
+    console.log("delete was clicked!");
+    $(this).closest('tr').remove();
+}
