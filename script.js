@@ -28,7 +28,7 @@ function addEmployee(e, complete){
     // Adjust total cost to reflect salary just entered
     totalCost+= Number($('#annualSalary').val());
     // Replace old total cost with updated total cost
-    $("#annualCost").replaceWith("<p id='annualCost'> Annual Company Cost: "+ totalCost + "</p>");
+    $("#annualCost").replaceWith("<p id='annualCost'> Annual Company Cost: $"+ totalCost + "</p>");
     // Add new employee to the table, can reference last item in the
     // array since it is the one we just added
     $('#salaryTBody').append(
@@ -48,10 +48,22 @@ function addEmployee(e, complete){
     document.getElementById("jobTitle").value = ""
     document.getElementById("annualSalary").value = ""
     // Add dynamic event handler to deleteEmployee button just created
-    $('.deleteButton').on('click', deleteEmployee)
+    // having problems with multiple click handlers, trying last()
+    $('.deleteButton').last().on('click', deleteEmployee)
 }
 
 function deleteEmployee(e, complete){
     console.log("delete was clicked!");
+    // Need to adjust salary before we delete the row
+    var currentRow = $(this).closest('tr');
+    var currentSalary=Number(currentRow.find("td:eq(4)").text()); // get current salary
+    // Adjust totalCost down for deleted employee
+    console.log("currentSalary here is:"+currentSalary)
+    console.log("totalCost before subtraction is"+totalCost)
+    totalCost= totalCost - currentSalary
+    console.log("totalCost after subtraction is"+totalCost)
+    //update statement on total cost at top of page
+    $("#annualCost").replaceWith("<p id='annualCost'> Annual Company Cost: $"+ totalCost + "</p>");
     $(this).closest('tr').remove();
+    return totalCost;
 }

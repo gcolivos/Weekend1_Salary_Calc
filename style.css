@@ -6,10 +6,10 @@ html{
 }
 
 table, th, td{
-    border: 1px solid rgb(242, 245, 247);
+    border: 1px solid rgb(6, 31, 46);
     background-color: rgb(10, 75, 75);
     border-collapse: collapse;
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 table{
@@ -21,7 +21,10 @@ th{
     text-align:center;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 td{
@@ -71,4 +74,10 @@ img{
 
 h1{
     margin-left: 200px;
+}
+
+#annualCost{
+    font-size: 40px;
+    font-style: italic;
+    margin-left: 10px;
 }
