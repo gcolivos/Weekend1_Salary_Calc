@@ -16,6 +16,13 @@ var totalCost=0;
 
 function addEmployee(e, complete){
     console.log("In addEmployee")
+    // Check to make sure all fields are completed
+    if($('#firstName').val()==="" || $('#lastName').val()==="" || 
+    $('#idNumber').val()==="" || $('#jobTitle').val()==="" || $('#annualSalary').val()===""){
+        alert("Please fill out form completely!");
+        return null
+    }
+    else{
     // Add a new employee object to the employeeList array, call each
     // value from the input boxes and set to appropriate keys
     employeeList.push({
@@ -51,12 +58,14 @@ function addEmployee(e, complete){
     // having problems with multiple click handlers, trying last()
     $('.deleteButton').last().on('click', deleteEmployee)
 }
+}
 
 function deleteEmployee(e, complete){
     console.log("delete was clicked!");
     // Need to adjust salary before we delete the row
     var currentRow = $(this).closest('tr');
     var currentSalary=Number(currentRow.find("td:eq(4)").text()); // get current salary
+    var currentID=currentRow.find("td:eq(2)").text(); // get current ID
     // Adjust totalCost down for deleted employee
     console.log("currentSalary here is:"+currentSalary)
     console.log("totalCost before subtraction is"+totalCost)
@@ -65,5 +74,9 @@ function deleteEmployee(e, complete){
     //update statement on total cost at top of page
     $("#annualCost").replaceWith("<p id='annualCost'> Annual Company Cost: $"+ totalCost + "</p>");
     $(this).closest('tr').remove();
+    // delete employee item from array using employee ID
+    var removeIndex = employeeList.map(function(item) { return item.idNumber; }).indexOf(currentID);
+    employeeList.splice(removeIndex, 1);
+    
     return totalCost;
 }

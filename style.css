@@ -35,9 +35,9 @@ td{
 
 button{
     font-size: 2em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 100px;
     padding: 10px 20px 11px !important;
     font-size: 21px !important;
     background-color: #F36C8C;
@@ -59,25 +59,30 @@ button{
 }
 
 img{
-    float:right;
+    float:left;
+    margin-right: 50px;
     opacity: 0.8;
     border: 1px solid black;
 }
 
 .inputArea{
-    border: 2px dashed indigo;
     width: 800px;
     padding-left: 20px;
     margin-left: 100px;
-    font-family: Georgia, 'Times New Roman', Times, serif
+    margin-right: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 h1{
     margin-left: 200px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    text-decoration-line: underline;
 }
 
 #annualCost{
     font-size: 40px;
     font-style: italic;
     margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
