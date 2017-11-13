@@ -35,7 +35,7 @@ function addEmployee(e, complete) {
         // Adjust total cost to reflect salary just entered
         totalCost += Number($('#annualSalary').val());
         // Replace old total cost with updated total cost
-        $("#monthlyCost").replaceWith("<p id='monthlyCost'> Monthly Company Cost: $" + Math.floor(totalCost/12) + "</p>");
+        $("#monthlyCost").replaceWith("<p id='monthlyCost'> Monthly Company Cost: $" + (totalCost / 12).toFixed(2) + "</p>");
         // Add new employee to the table, can reference last item in the
         // array since it is the one we just added
         $('#salaryTBody').append(
@@ -72,7 +72,7 @@ function deleteEmployee(e, complete) {
     totalCost = totalCost - currentSalary
     console.log("totalCost after subtraction is" + totalCost)
     //update statement on total cost at top of page
-    $("#monthlyCost").replaceWith("<p id='monthlyCost'> Monthly Company Cost: $" + Math.floor(totalCost/12) + "</p>");
+    $("#monthlyCost").replaceWith("<p id='monthlyCost'> Monthly Company Cost: $" + (totalCost / 12).toFixed(2) + "</p>");
     $(this).closest('tr').remove();
     // delete employee item from array using employee ID
     var removeIndex = employeeList.map(function (item) { return item.idNumber; }).indexOf(currentID);
@@ -84,9 +84,55 @@ function deleteEmployee(e, complete) {
 
 // Live Solve with Dev Notes
 // Step 0: Setup interface, source scripts, onClick working
-// Step 1: get inputs for employee obj, push employee into global array
-// Step 2: calculations, clear inputs
-// Step 3: Append to DOM
+// // Step 1: get inputs for employee obj, push employee into global array
+// // Step 2: calculations, clear inputs
+
+// Note: So in my code, I created a global variable to hold total cost, I did not do a for loop, but this is how to set up a for loop
+// for this purpose:
+
+// function calculateSalaries() {
+    //loop through employees array
+    //convert each salary to number
+    //add salary to total salaries
+    // var totalSalaries = 0;
+    //for(var i=0; i<employeeList.length; i++){
+        //console.log(Number(employeeList[i].salary));
+        //totalSalaries += Number(employeeList[i].salary);
+        //var monthlySalary Cost = totalSalaries/12
+        //}
+    //console.log(totalSalaries)
+    //displayOutput(totalSalaries, monthlySalaries);
+// }
+
+
+// // Step 3: Append to DOM
+
+// function displayOutput(salaries, monthly){   note: the paramaeters get sent 
+//     console.log('in displayOutput');
+//     total calculateSalaries
+//     $('#totalSalaryOut').empty('');
+//     $('#totalSalaryOut').append('Total Salaries: $(salaries.toFixed(2));
+//     monthly salary cost
+//     all employees
 
 // Pro tip: Make some generic css's you can drop into a given file
+
+// OK, so when I set up the delete buttons I could have used a 'data-index' value to set an id to the buttons
+// For example:
+// <button data-index=" ' + i + ' " class="removeButton">Remove</button>
+// Note: could be data-hotDog, data-cat, just data-something for assigning the identifier to the button
+
+
+// function onReady() {
+//     console.log("Ready to roll");
+//     // Set up event handler for adding an employee
+// //     $('#submitButton').on('click', addEmployee)
+//         $(document).on('click', '.deleteButton', function(){
+            // var myIndex = $(this).data('index');
+            // employeeList.splice (myIndex, 1);
+// }
+//         Note: this works because you are adding the click handler to the whole document, which accounts
+//         for the whole document including new instances of a button that are created dynamically
+// // }
+
 // // End Live Solve
